@@ -1,3 +1,15 @@
 <resources>
+
+    <!--- App Names -->
     <string name="app_name">Speisekarte</string>
+    <string name="peter_meyer_gastro">Peter Meyer Gastro</string>
+
+    <!--- Menu sorted -->
+    <string name="appetizers">Vorspeisen</string>
+    <string name="vegetarian">Vegetarisch</string>
+    <string name="meat">Fleisch</string>
+    <string name="fish">Fisch</string>
+    <string name="desserts">Nachspeisen</string>
+    <string name="drinks">Getränke</string>
+
 </resources>

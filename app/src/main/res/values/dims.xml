@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="standard_marging">5dp</dimen>
+    <dimen name="standard_margin">5dp</dimen>
+    <dimen name="standard_button_padding">10dp</dimen>
+    <dimen name="standard_button_height">25dp</dimen>
+    <dimen name="standard_button_margin">10dp</dimen>
 
 </resources>
