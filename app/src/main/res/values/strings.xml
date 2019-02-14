@@ -5,7 +5,7 @@
     <string name="peter_meyer_gastro">Peter Meyer Gastro</string>
 
     <!--- Buttons -->
-    <string name="order">Bestellen</string>
+    <string name="order">hinzufügen</string>
 
     <!--- Menu sorted -->
     <string name="appetizers">Vorspeisen</string>
