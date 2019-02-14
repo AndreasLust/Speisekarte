@@ -4,6 +4,9 @@
     <string name="app_name">Speisekarte</string>
     <string name="peter_meyer_gastro">Peter Meyer Gastro</string>
 
+    <!--- Buttons -->
+    <string name="order">Bestellen</string>
+
     <!--- Menu sorted -->
     <string name="appetizers">Vorspeisen</string>
     <string name="vegetarian">Vegetarisch</string>
