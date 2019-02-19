@@ -8,11 +8,15 @@
     <string name="order">hinzufügen</string>
 
     <!--- Menu sorted -->
+    <string name="menu">Speisekarte</string>
     <string name="appetizers">Vorspeisen</string>
     <string name="vegetarian">Vegetarisch</string>
     <string name="meat">Fleisch</string>
     <string name="fish">Fisch</string>
     <string name="desserts">Nachspeisen</string>
     <string name="drinks">Getränke</string>
+
+
+    <string name="firsttry">First Try</string>
 
 </resources>
