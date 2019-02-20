@@ -17,6 +17,9 @@
     <string name="drinks">Getränke</string>
 
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="firsttry">First Try</string>
 
 </resources>

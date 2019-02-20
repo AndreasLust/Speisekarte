@@ -1,53 +1,194 @@
 package com.example.speisekarte;
 
-import android.content.Intent;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.util.Pair;
-import android.support.v7.widget.CardView;
-import android.view.View;
-import android.view.Window;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.WindowManager;
 
-import butterknife.BindView;
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.List;
+
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+    implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.spaghetti)
-    protected CardView spaghetti;
+    private FragmentManager fragmentManager = new FragmentManager() {
+        @NonNull
+        @Override
+        public FragmentTransaction beginTransaction() {
+            return null;
+        }
 
-    @BindView(R.id.spaghetti_title)
-    protected View spaghettiTitle;
+        @Override
+        public boolean executePendingTransactions() {
+            return false;
+        }
 
-    @BindView(R.id.spaghetti_price)
-    protected View spaghettiPrice;
+        @Nullable
+        @Override
+        public Fragment findFragmentById(int i) {
+            return null;
+        }
 
-    @BindView(R.id.spaghetti_picture)
-    protected View spaghettiPicture;
+        @Nullable
+        @Override
+        public Fragment findFragmentByTag(@Nullable String s) {
+            return null;
+        }
 
+        @Override
+        public void popBackStack() {
 
+        }
+
+        @Override
+        public boolean popBackStackImmediate() {
+            return false;
+        }
+
+        @Override
+        public void popBackStack(@Nullable String s, int i) {
+
+        }
+
+        @Override
+        public boolean popBackStackImmediate(@Nullable String s, int i) {
+            return false;
+        }
+
+        @Override
+        public void popBackStack(int i, int i1) {
+
+        }
+
+        @Override
+        public boolean popBackStackImmediate(int i, int i1) {
+            return false;
+        }
+
+        @Override
+        public int getBackStackEntryCount() {
+            return 0;
+        }
+
+        @NonNull
+        @Override
+        public BackStackEntry getBackStackEntryAt(int i) {
+            return null;
+        }
+
+        @Override
+        public void addOnBackStackChangedListener(
+            @NonNull OnBackStackChangedListener onBackStackChangedListener) {
+
+        }
+
+        @Override
+        public void removeOnBackStackChangedListener(
+            @NonNull OnBackStackChangedListener onBackStackChangedListener) {
+
+        }
+
+        @Override
+        public void putFragment(@NonNull Bundle bundle, @NonNull String s,
+                                @NonNull Fragment fragment) {
+
+        }
+
+        @Nullable
+        @Override
+        public Fragment getFragment(@NonNull Bundle bundle, @NonNull String s) {
+            return null;
+        }
+
+        @NonNull
+        @Override
+        public List<Fragment> getFragments() {
+            return null;
+        }
+
+        @Nullable
+        @Override
+        public Fragment.SavedState saveFragmentInstanceState(Fragment fragment) {
+            return null;
+        }
+
+        @Override
+        public boolean isDestroyed() {
+            return false;
+        }
+
+        @Override
+        public void registerFragmentLifecycleCallbacks(
+            @NonNull FragmentLifecycleCallbacks fragmentLifecycleCallbacks, boolean b) {
+
+        }
+
+        @Override
+        public void unregisterFragmentLifecycleCallbacks(
+            @NonNull FragmentLifecycleCallbacks fragmentLifecycleCallbacks) {
+
+        }
+
+        @Nullable
+        @Override
+        public Fragment getPrimaryNavigationFragment() {
+            return null;
+        }
+
+        @Override
+        public void dump(String s, FileDescriptor fileDescriptor, PrintWriter printWriter,
+                         String[] strings) {
+
+        }
+
+        @Override
+        public boolean isStateSaved() {
+            return false;
+        }
+    };
+
+    // inflates Main Activity, removes standard Android Title and binds ButterKnife Framework to this class
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.bind(this);
+        Fragment fragment = new FragmentCardview();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @OnClick(R.id.spaghetti)
-    protected void onCardviewClicked() {
-        Intent intent = new Intent(this, DetailedCardview.class);
-        Pair<View, String> p1 = Pair.create((View) spaghetti, "transition_spaghetti_cardview");
-        Pair<View, String> p2 = Pair.create(spaghettiTitle, "transition_spaghetti_title");
-        Pair<View, String> p3 = Pair.create(spaghettiPrice, "transition_spaghetti_price");
-        Pair<View, String> p4 = Pair.create(spaghettiPicture, "transition_spaghetti_picture");
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, p1, p2, p3, p4);
-        startActivity(intent, options.toBundle());
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }
