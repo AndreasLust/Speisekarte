@@ -163,7 +163,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.bind(this);
         Fragment fragment = new FragmentCardview();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -191,4 +192,14 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void showDetailedCardview(int id) {
+        Fragment fragment = new FragmentDetailedCardview();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setTransition(R.transition.cardview_shared_element_transition);
+        transaction.replace(R.id.rv_cardviews, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }
