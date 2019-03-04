@@ -1,14 +1,14 @@
-package com.example.speisekarte;
+package com.example.speisekarte.Fragments;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.speisekarte.R;
 
 public class FragmentDetailedCardview extends Fragment {
 

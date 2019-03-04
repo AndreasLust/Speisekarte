@@ -10,8 +10,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.speisekarte.Fragments.FragmentDetailedCardview;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -169,7 +174,6 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = new FragmentCardview();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_main, fragment);
-        transaction.addToBackStack(null);
         transaction.commit();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -196,7 +200,11 @@ public class MainActivity extends AppCompatActivity
     public void showDetailedCardview(int id) {
         Fragment fragment = new FragmentDetailedCardview();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setTransition(R.transition.cardview_shared_element_transition);
+        transaction.setReorderingAllowed(true);
+        transaction.addSharedElement((CardView) findViewById(R.id.spaghetti), findViewById(R.id.spaghetti).getTransitionName());
+        transaction.addSharedElement((TextView) findViewById(R.id.spaghetti_title), findViewById(R.id.spaghetti_title).getTransitionName());
+        transaction.addSharedElement((ImageView) findViewById(R.id.spaghetti_picture), findViewById(R.id.spaghetti_picture).getTransitionName());
+        transaction.addSharedElement((TextView) findViewById(R.id.spaghetti_price), findViewById(R.id.spaghetti_price).getTransitionName());
         transaction.replace(R.id.rv_cardviews, fragment);
         transaction.addToBackStack(null);
         transaction.commit();

@@ -1,14 +1,21 @@
-package com.example.speisekarte;
+package com.example.speisekarte.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.SharedElementCallback;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.speisekarte.MainActivity;
+import com.example.speisekarte.R;
+
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +51,14 @@ public class FragmentCardview extends Fragment {
     protected void onCardviewClicked() {
         Log.d(TAG, "onCardviewClicked: snjgihesfighsfdjglkk");
         ((MainActivity) getActivity()).showDetailedCardview(R.id.spaghetti);
+        setExitSharedElementCallback(
+                new SharedElementCallback() {
+                    @Override
+                    public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
+                        
+                    }
+                }
+        );
     }
 
 }
