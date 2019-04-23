@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.speisekarte.Fragments.FragmentCardview;
 import com.example.speisekarte.Fragments.FragmentDetailedCardview;
 
 import java.io.FileDescriptor;
